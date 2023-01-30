@@ -15,17 +15,20 @@ conteudoCronometro.innerHTML = `<h1>${minutes}:${seconds}</h1>`
 
 botaoPlay.addEventListener("click", () => {
     numbers = setInterval(timer, 1000);
+    botaoPlay.style.visibility = "hidden";
 })
 
 botaoPause.addEventListener("click", () => {
-    clearInterval(numbers)
+    clearInterval(numbers);
+    botaoPlay.style.visibility = "visible";
 })
 
 botaoStop.addEventListener("click", () => {
     clearInterval(numbers);
     minutes = 0;
     seconds = 0;
-    conteudoCronometro.innerHTML = `<h1>${minutes}:${seconds}</h1>`
+    conteudoCronometro.innerHTML = `<h1>${minutes}:${seconds}</h1>`;
+    botaoPlay.style.visibility = "visible";
 })
 
 // function showNumbers(minutos, segundos) {
