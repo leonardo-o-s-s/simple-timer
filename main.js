@@ -8,22 +8,45 @@ const conteudoCronometro = document.getElementById("conteudo__cronometro")
 const botaoPlay = document.getElementById("play")
 const botaoPause = document.getElementById("pause")
 const botaoStop = document.getElementById("stop")
-const seconds = 0
-const minutes = 0
+let seconds = 0
+let minutes = 0
 
-botaoPlay.addEventListener("click", play)
+conteudoCronometro.innerHTML = `<h1>${minutes}:${seconds}</h1>`
+
+botaoPlay.addEventListener("click", () => {
+    numbers = setInterval(timer, 1000);
+})
 
 botaoPause.addEventListener("click", () => {
-    console.log("pause")
+    clearInterval(numbers)
 })
 
 botaoStop.addEventListener("click", () => {
-    console.log("stop")
+    clearInterval(numbers);
+    minutes = 0;
+    seconds = 0;
+    conteudoCronometro.innerHTML = `<h1>${minutes}:${seconds}</h1>`
 })
 
-function play() {
+// function showNumbers(minutos, segundos) {
+//     conteudoCronometro.innerHTML = `
+//     <h1>${minutos}:${segundos}</h1>
+//     `
+// }
+
+function playTimer() {
+    setInterval(timer, 100)
+}
+
+function timer() {
+    seconds++
     conteudoCronometro.innerHTML = `
     <h1>${minutes}:${seconds}</h1>
     `
+
+    if (seconds == 60) {
+        minutes++
+        seconds = 0
+    }
 }
 // <h1>00:00</h1>
