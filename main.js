@@ -11,7 +11,7 @@ const botaoStop = document.getElementById("stop")
 let seconds = 0
 let minutes = 0
 
-conteudoCronometro.innerHTML = `<h1>${minutes}:${seconds}</h1>`
+conteudoCronometro.innerHTML = `<h1>0${minutes}:0${seconds}</h1>`
 
 botaoPlay.addEventListener("click", () => {
     numbers = setInterval(timer, 1000);
@@ -27,7 +27,7 @@ botaoStop.addEventListener("click", () => {
     clearInterval(numbers);
     minutes = 0;
     seconds = 0;
-    conteudoCronometro.innerHTML = `<h1>${minutes}:${seconds}</h1>`;
+    conteudoCronometro.innerHTML = `<h1>0${minutes}:0${seconds}</h1>`;
     botaoPlay.style.visibility = "visible";
 })
 
@@ -50,6 +50,10 @@ function timer() {
     if (seconds == 60) {
         minutes++
         seconds = 0
+    }
+
+    if (seconds < 10 && minutes < 10) {
+        conteudoCronometro.innerHTML = `<h1>0${minutes}:0${seconds}</h1>`
     }
 }
 // <h1>00:00</h1>
